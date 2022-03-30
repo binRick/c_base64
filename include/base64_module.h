@@ -63,7 +63,6 @@ static bool base64_module_private_string_to_bool(const char *s) {
 }
 
 
-
 // `private` module exports
 exports(private) {
   defaults(private, CLIB_MODULE_DEFAULT),
@@ -91,7 +90,6 @@ static char * base64_module_bool_to_string(const bool b) {
 }
 
 
-
 // `base64_module` module initializer
 static int base64_module_init(module(base64_module) *exports) {
   void debug_private(){
@@ -105,7 +103,7 @@ static int base64_module_init(module(base64_module) *exports) {
   debug_private();
   exports->bool_to_string = base64_module_bool_to_string;
   exports->string_to_bool = base64_module_string_to_bool;
-  exports->is_base64        = base64_module_is_base64;
+  exports->is_base64      = base64_module_is_base64;
   exports->private        = require(private);
   debug_private();
 
