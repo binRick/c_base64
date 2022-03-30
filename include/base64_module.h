@@ -1,4 +1,8 @@
 /***********************************/
+#ifndef MODULE_LOG_LEVEL
+#define MODULE_LOG_LEVEL    LOG_DEBUG
+#endif
+/***********************************/
 #include <stdio.h>
 /***********************************/
 #include "../deps/def.h"
@@ -9,9 +13,8 @@
 /***********************************/
 #include "../deps/require.h"
 /***********************************/
-#ifndef MODULE_LOG_LEVEL
-#define MODULE_LOG_LEVEL    LOG_DEBUG
-#endif
+#include "deps/trim/trim.h"
+/***********************************/
 /***********************************/
 
 // `base64_module` module definition
@@ -45,14 +48,14 @@ module(private) {
 // private `private` module base64_decodesymbol
 static char * base64_module_private_base64_decode(const unsigned char *string, size_t len) {
   log_trace("base64_module_private_base64_decode():%s/%d", string, len);
-  return(b64_decode(string, len));
+  return(trim(b64_decode(string, len)));
 }
 
 
 // private `private` module base64_encode symbol
 static char * base64_module_private_base64_encode(const unsigned char *string, size_t len) {
   log_trace("base64_module_private_base64_encode():%s/%d", string, len);
-  return(b64_encode(string, len));
+  return(trim(b64_encode(string, len)));
 }
 
 

@@ -13,6 +13,7 @@
     "install": "make install",
     "dependencies": {
         "clibs/ms": "0.0.4",
-        "littlstar/b64.c": "0.0.2"
+        "littlstar/b64.c": "0.0.2",
+        "stephenmathieson/trim.c": "0.0.2"
     }
 }

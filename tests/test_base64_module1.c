@@ -18,7 +18,7 @@ void init(){
 
 void module_hook(){
   char *s = "abc";
-  char *e = "YWJjCg==";
+  char *e = "V2VkIE1hciAzMCAwODo1MDoxMyBQTSBVVEMgMjAyMgo=";
   char *encoded, *decoded;
 
   encoded = cm_base64->encode(s, strlen(s));
