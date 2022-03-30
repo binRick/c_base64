@@ -17,12 +17,14 @@ void init(){
 
 
 void module_hook(){
-  bool b0 = true, b1 = false;
-  char *bs0 = cm_base64->bool_to_string(b0);
-  char *bs1 = cm_base64->bool_to_string(b1);
+  char *s = "abc";
+  char *e = "YWJjCg==";
+  char *encoded, *decoded;
 
-  log_info(">cm_base64->bool_to_string(%d):%s", b0, bs0);
-  log_info(">cm_base64->bool_to_string(%d):%s", b1, bs1);
+  encoded = cm_base64->encode(s, strlen(s));
+  log_info("encoded %db string '%s' => %db string '%s'", strlen(s), s, strlen(encoded), encoded);
+  decoded = cm_base64->decode(e, strlen(e));
+  log_info("decoded %db string '%s' => %db string '%s'", strlen(e), e, strlen(decoded), decoded);
 }
 
 

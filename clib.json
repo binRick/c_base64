@@ -12,6 +12,7 @@
     "makefile": "Makefile",
     "install": "make install",
     "dependencies": {
-        "clibs/ms": "0.0.4"
+        "clibs/ms": "0.0.4",
+        "littlstar/b64.c": "0.0.2"
     }
 }

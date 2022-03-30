@@ -19,9 +19,8 @@ module(base64_module) {
   defaults(base64_module, CLIB_MODULE);
   void *private;
 
-  bool (*string_to_bool)(const char *);
-  bool (*is_base64)(const char *);
-  char * (*bool_to_string)(const base64);
+  char          * (*encode)(const unsigned char *string, size_t len);
+  unsigned char * (*decode)(const char *encoded, size_t len);
 };
 
 // `base64_module` module prototypes
@@ -38,55 +37,42 @@ exports(base64_module) {
 // `private` module definition
 module(private) {
   define(private, CLIB_MODULE);
-  bool (*string_to_bool)(const char *);
-  bool (*is_base64)(const char *);
-  char * (*bool_to_string)(const base64);
+  char          * (*encode)(const unsigned char *string, size_t len);
+  unsigned char * (*decode)(const char *encoded, size_t len);
 };
 
 
-// private `private` module bool_to_string symbol
-static char * base64_module_private_bool_to_string(const bool b) {
-  log_trace("base64_module_private_bool_to_string():%d", b);
-  return(c_bool_to_str(b));
+// private `private` module base64_decodesymbol
+static char * base64_module_private_base64_decode(const unsigned char *string, size_t len) {
+  log_trace("base64_module_private_base64_decode():%s/%d", string, len);
+  return(b64_decode(string, len));
 }
 
 
-static bool base64_module_private_is_base64(const char *s) {
-  log_trace("base64_module_is_base64():%s", s);
-  return(c_is_bool(s));
-}
-
-
-static bool base64_module_private_string_to_bool(const char *s) {
-  log_trace("base64_module_private_string_to_string():%s", s);
-  return(c_str_to_bool(s));
+// private `private` module base64_encode symbol
+static char * base64_module_private_base64_encode(const unsigned char *string, size_t len) {
+  log_trace("base64_module_private_base64_encode():%s/%d", string, len);
+  return(b64_encode(string, len));
 }
 
 
 // `private` module exports
 exports(private) {
   defaults(private, CLIB_MODULE_DEFAULT),
-  .bool_to_string = base64_module_private_bool_to_string,
-  .string_to_bool = base64_module_private_string_to_bool,
+  .encode = base64_module_private_base64_encode,
+  .decode = base64_module_private_base64_decode,
 };
 
 
-static bool base64_module_is_base64(const char *s) {
-  log_trace("base64_module_is_base64(%s)", s);
-  return(require(private)->is_base64(s));
+static char * base64_module_decode(const unsigned char *string, size_t len) {
+  log_trace("base64_module_private_base64_decode():%s/%d", string, len);
+  return(require(private)->decode(string, len));
 }
 
 
-static bool base64_module_string_to_bool(const char *s) {
-  log_trace("base64_module_string_to_bool(%s)", s);
-  return(require(private)->string_to_bool(s));
-}
-
-
-// private `base64_module` module bool_to_string symbol
-static char * base64_module_bool_to_string(const bool b) {
-  log_trace("base64_module_bool_to_string()");
-  return(require(private)->bool_to_string(b));
+static char * base64_module_encode(const unsigned char *string, size_t len) {
+  log_trace("base64_module_private_base64_encode():%s/%d", string, len);
+  return(require(private)->encode(string, len));
 }
 
 
@@ -101,10 +87,9 @@ static int base64_module_init(module(base64_module) *exports) {
   }
 
   debug_private();
-  exports->bool_to_string = base64_module_bool_to_string;
-  exports->string_to_bool = base64_module_string_to_bool;
-  exports->is_base64      = base64_module_is_base64;
-  exports->private        = require(private);
+  exports->encode  = base64_module_encode;
+  exports->decode  = base64_module_decode;
+  exports->private = require(private);
   debug_private();
 
   return(0);
