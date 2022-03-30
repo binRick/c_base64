@@ -17,14 +17,14 @@ void init(){
 
 
 void module_hook(){
-  char *s = "abc";
-  char *e = "V2VkIE1hciAzMCAwODo1MDoxMyBQTSBVVEMgMjAyMgo=";
+  char *decoded_string = "Wed Mar 30 08:54:15 PM UTC 2022";
+  char *encoded_string = "V2VkIE1hciAzMCAwODo1MDoxMyBQTSBVVEMgMjAyMgo=";
   char *encoded, *decoded;
 
-  encoded = cm_base64->encode(s, strlen(s));
-  log_info("encoded %db string '%s' => %db string '%s'", strlen(s), s, strlen(encoded), encoded);
-  decoded = cm_base64->decode(e, strlen(e));
-  log_info("decoded %db string '%s' => %db string '%s'", strlen(e), e, strlen(decoded), decoded);
+  encoded = cm_base64->encode(decoded_string, strlen(decoded_string));
+  log_info("encoded %db string '%s' => %db string '%s'", strlen(decoded_string), decoded_string, strlen(encoded), encoded);
+  decoded = cm_base64->decode(encoded, strlen(encoded));
+  log_info("decoded %db string '%s' => %db string '%s'", strlen(encoded), encoded, strlen(decoded), decoded);
 }
 
 
