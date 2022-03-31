@@ -46,6 +46,8 @@ void module_lifecycle(){
 int main(void) {
   init();
   module_lifecycle();
+  dbg(123, % d);
+
   return(0);
 }
 /*******************/
