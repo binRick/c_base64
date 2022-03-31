@@ -5,13 +5,15 @@ default: all
 
 .PHONY: all
 
-all: clib build test
+all: build test
 
 .PHONY: .FORCE
 .FORCE:
 
-clib:
+clib-install:
 	@clib install
+
+setup: clib-install
 
 build: 
 	@test -d $(BUILD_DIR) && {  meson $(BUILD_DIR) --reconfigure; } || { meson $(BUILD_DIR); }
@@ -36,6 +38,8 @@ clib-update:
 git-pull:
 	@git pull
 
-push: tidy
+git-commit:
 	@git commit -am 'automated git commit'
+
+push: tidy git-commit
 	@git push
