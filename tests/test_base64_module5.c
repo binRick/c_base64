@@ -7,29 +7,21 @@
 #define MODULE_LOG_LEVEL    LOG_TRACE
 #define LOGGER              log_info
 #define MODULE_TYPE         base64_module
-#define MODULE_NAME         cm_base64
 /*******************/
 #include "base64_module.h"
-/*******************/
 #include "deps/trim/trim.c"
 /*******************/
-typedef enum {
-  MOD_FXN_ENC = 0,
-  MOD_FXN_DEC = 1,
-} MOD_FXN_INDEXES;
+module(MODULE_TYPE) * cm_base64;
 /*******************/
+#define MODULE_REQUIRES             \
+  cm_base64 = require(MODULE_TYPE); \
 /*******************/
-module(MODULE_TYPE) * MODULE_NAME;
+#define MODULE_EXPORTED_FUNCTIONS                                         \
+  char *cm_b64_enc(STRING){ cm_base64->encode(STRING, strlen(STRING)); }; \
+  char *cm_b64_dec(STRING){ cm_base64->decode(STRING, strlen(STRING)); };
 /*******************/
-#define MODULE_REQUIRES               \
-  MODULE_NAME = require(MODULE_TYPE); \
-/*******************/
-#define MODULE_EXPORTED_FUNCTIONS                                           \
-  char *cm_b64_enc(STRING){ MODULE_NAME->encode(STRING, strlen(STRING)); }; \
-  char *cm_b64_dec(STRING){ MODULE_NAME->decode(STRING, strlen(STRING)); };
-/*******************/
-#define MODULE_LOCAL_VARS                                                       \
-  char *decoded_string = "Wed Mar 30 08:54:15 PM UTC 2022", *encoded, *decoded; \
+#define MODULE_LOCAL_VARS                               \
+  char *decoded_string = "Wed Mar", *encoded, *decoded; \
 /*******************/
 typedef struct {
   unsigned int id;
@@ -52,7 +44,7 @@ int main(void) {
   MODULE_LOCAL_VARS
   MODULE_REQUIRES
   MODULE_RUN_FUNCTIONS
-  clib_module_free(MODULE_NAME);
+  clib_module_free(cm_base64);
 
   return(0);
 }
