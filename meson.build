@@ -39,11 +39,25 @@ test_base64_module1 = executable('test_base64_module1', [
   ], include_directories : [incdir], 
   dependencies : [],
 )
+test_base64_module4 = executable('test_base64_module4', [ 
+    'src/base64.c', 
+    'tests/test_base64_module4.c',  
+  ], include_directories : [incdir], 
+  dependencies : [],
+)
+test_base64_module5 = executable('test_base64_module5', [ 
+    'src/base64.c', 
+    'tests/test_base64_module5.c',  
+  ], include_directories : [incdir], 
+  dependencies : [],
+)
 #//***********************************************************/
 tests = [
   ['test base64 module 1', test_base64_module1, 'test-base64-module1.log'],
   ['test base64 module 2', test_base64_module2, 'test-base64-module2.log'],
   ['test base64 module 3', test_base64_module3, 'test-base64-module3.log'],
+  ['test base64 module 4', test_base64_module4, 'test-base64-module4.log'],
+  ['test base64 module 5', test_base64_module5, 'test-base64-module5.log'],
 ]
 #//***********************************************************/
 
