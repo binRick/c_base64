@@ -21,6 +21,12 @@ incdir = include_directories(
   '../ok',
 )
 #//***********************************************************/
+test_base64_module3 = executable('test_base64_module3', [ 
+    'src/base64.c', 
+    'tests/test_base64_module3.c',  
+  ], include_directories : [incdir], 
+  dependencies : [],
+)
 test_base64_module2 = executable('test_base64_module2', [ 
     'src/base64.c', 
     'tests/test_base64_module2.c',  
@@ -37,6 +43,7 @@ test_base64_module1 = executable('test_base64_module1', [
 tests = [
   ['test base64 module 1', test_base64_module1, 'test-base64-module1.log'],
   ['test base64 module 2', test_base64_module2, 'test-base64-module2.log'],
+  ['test base64 module 3', test_base64_module3, 'test-base64-module3.log'],
 ]
 #//***********************************************************/
 

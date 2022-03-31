@@ -1,6 +1,6 @@
 /***********************************/
 #ifndef MODULE_LOG_LEVEL
-#define MODULE_LOG_LEVEL    LOG_DEBUG
+#define MODULE_LOG_LEVEL    LOG_TRACE
 #endif
 /***********************************/
 #include <stdio.h>
@@ -21,7 +21,6 @@ module(base64_module) {
 
 // `base64_module` module prototypes
 static int  base64_module_init(module(base64_module) * exports);
-
 static void base64_module_deinit(module(base64_module) * exports);
 
 // `base64_module` module exports
