@@ -1,6 +1,6 @@
 {
     "name": "c_base64",
-    "version": "4d83a01fc797f0a6f3cca3b15ffc3411dd346f7b",
+    "version": "3e5bfbacd2134622ce0968edccb06c3f2e9b565b",
     "repo": "binRick/c_base64",
     "description": "C Base64 Encoder & Decoder",
     "keywords": [

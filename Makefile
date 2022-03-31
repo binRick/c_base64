@@ -1,4 +1,5 @@
 BUILD_DIR = .build
+GET_COMMIT = "git log -q |grep '^commit '|head -n1|cut -d' ' -f2"
 
 default: all
 
@@ -28,6 +29,9 @@ tidy:
 	@./tidy.sh
 
 pull: git-pull clib build test
+
+clib-update:
+	@./update_commit.sh
 
 git-pull:
 	@git pull
