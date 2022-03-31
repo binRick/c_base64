@@ -26,3 +26,12 @@ install:
 
 tidy:
 	@./tidy.sh
+
+pull: git-pull clib build test
+
+git-pull:
+	@git pull
+
+push: tidy
+	@git commit -am 'automated git commit'
+	@git push

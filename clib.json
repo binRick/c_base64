@@ -11,9 +11,20 @@
     "license": "MIT",
     "makefile": "Makefile",
     "install": "make install",
+    "files": [
+        "src/base64.c",
+        "src/base64_module_deps.c",
+        "src/base64_module.c",
+        "src/globals.c",
+        "include/base64.h",
+        "include/base64_module.h",
+        "include/globals.h",
+        "include/module.h"
+    ],
     "dependencies": {
         "clibs/ms": "0.0.4",
         "littlstar/b64.c": "0.0.2",
-        "stephenmathieson/trim.c": "0.0.2"
+        "stephenmathieson/trim.c": "0.0.2",
+        "clibs/module": "0.1.1"
     }
 }

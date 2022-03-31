@@ -3,10 +3,6 @@
 #define MODULE_EXEC_ENABLED    false
 #define MODULE_LOG_LEVEL       LOG_INFO
 /*******************/
-#include "include/module.h"
-/*******************/
-#include "log/log.c"
-/*******************/
 #include "src/base64_module.c"
 /*******************/
 
