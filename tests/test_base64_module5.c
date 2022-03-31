@@ -13,9 +13,9 @@
 /*******************/
 #include "deps/trim/trim.c"
 /*******************/
-typedef enum { 
-    MOD_FXN_ENC = 0,
-    MOD_FXN_DEC = 1,
+typedef enum {
+  MOD_FXN_ENC = 0,
+  MOD_FXN_DEC = 1,
 } MOD_FXN_INDEXES;
 /*******************/
 /*******************/
@@ -35,7 +35,7 @@ typedef struct {
   unsigned int id;
   char         name[24];
   char         module_function_name[32];
-  char* (*fn)(char *, int);
+  char * (*fn)(char *, int);
 } __MOD_FXNS;
 /*******************/
 #define MODULE_RUN_FUNCTIONS                                                                                      \
