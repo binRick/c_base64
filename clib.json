@@ -25,6 +25,8 @@
         "clibs/ms": "0.0.4",
         "littlstar/b64.c": "0.0.2",
         "stephenmathieson/trim.c": "0.0.2",
-        "clibs/module": "0.1.1"
+        "clibs/module": "0.1.1",
+        "4thel00z/env.h": "0.1.0",
+        "binRick/c_dbg": "f7ffb638cd774bafe100bfeb22c7dc0d06840ce5"
     }
 }

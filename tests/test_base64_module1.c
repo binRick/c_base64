@@ -3,7 +3,7 @@
 #define MODULE_EXEC_ENABLED    false
 #define MODULE_LOG_LEVEL       LOG_INFO
 /*******************/
-#include "src/base64_module.c"
+#include "src/deps.c"
 /*******************/
 
 
