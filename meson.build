@@ -1,15 +1,20 @@
 #//***********************************************************/
 project(
     'c_base64',          ['c'],         version : '0.0.1',         
-    default_options : ['warning_level=2','c_std=gnu99'],
+    default_options : ['warning_level=0','c_std=gnu99'],
 )
 #//***********************************************************/
 host_system = host_machine.system()
+z_dep = dependency('zlib', required : true)
 
 cc = meson.get_compiler('c')
 sh = find_program('sh', required : true)
 passh = find_program('passh', required : true)
 
+add_global_arguments(
+  '-lm',
+  language : 'c',
+)
 #//***********************************************************/
 test_deps = []
 #//***********************************************************/
@@ -32,6 +37,11 @@ test_base64_module2 = executable('test_base64_module2', [
     'tests/test_base64_module2.c',  
   ], include_directories : [incdir], 
   dependencies : [],
+)
+test_base252_module1 = executable('test_base252_module1', [ 
+    'tests/test_base252_module1.c',  
+  ], include_directories : [incdir], 
+  dependencies : [z_dep],
 )
 test_base64_module1 = executable('test_base64_module1', [ 
     'src/base64.c', 
@@ -65,6 +75,7 @@ tests = [
   ['test base64 module 4', test_base64_module4, 'test-base64-module4.log'],
   ['test base64 module 5', test_base64_module5, 'test-base64-module5.log'],
   ['test base64 module 6', test_base64_module6, 'test-base64-module6.log'],
+  ['test base252 module 1', test_base252_module1, 'test-base252-module1.log'],
 ]
 #//***********************************************************/
 

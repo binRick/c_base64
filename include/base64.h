@@ -5,9 +5,9 @@
 /*************/
 #define BASE64_VERBOSE_MODE    true
 /*************/
-#include "deps/trim/trim.h"
+#include "../deps/trim/trim.h"
 /*************/
-#include "deps/b64/b64.h"
+#include "../deps/b64/b64.h"
 /*************/
 
 
